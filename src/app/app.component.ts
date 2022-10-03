@@ -75,7 +75,7 @@ export class AppComponent implements OnInit {
   }
 
   sortChange(order) {
-    //console.log(order);
+    console.log(order);
   }
 
   resendInvite(row, action) {
