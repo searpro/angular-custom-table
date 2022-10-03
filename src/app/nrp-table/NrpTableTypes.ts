@@ -22,4 +22,4 @@ export type NRPTableRowAction = {
 
 export type NRPTableData = NRPTableRow[];
 
-export type NRPTableRowActionFunction = (row: NRPTableRow) => void;
+export type NRPTableRowActionFunction = (row: NRPTableRow, action?: any) => void;

@@ -1,6 +1,6 @@
 import { Component, OnInit, VERSION } from '@angular/core';
 import { faker } from '@faker-js/faker';
-
+import { NRPTableRowActions } from './nrp-table/NrpTableTypes';
 
 @Component({
   selector: 'my-app',
@@ -23,22 +23,34 @@ export class AppComponent implements OnInit {
       columnType: 'string',
     },
     {
-      title: 'Age',
-      key: 'age',
+      title: 'Rank',
+      key: 'rank',
+      sortable: false,
+      columnType: 'number',
+    },
+    {
+      title: 'Region',
+      key: 'region',
       sortable: true,
       columnType: 'number',
     },
   ];
-  rowActions = [
+
+  rowActions: NRPTableRowActions = [
     {
-      title: 'edit',
+      title: 'Edit',
       enabled: true,
       action: (row) => console.log(row),
     },
     {
-      title: 'view',
+      title: 'View',
       enabled: true,
       action: (row) => alert(JSON.stringify(row)),
+    },
+    {
+      title: 'Resend Invite',
+      enabled: false,
+      action: this.resendInvite,
     },
   ];
   tableData = [
@@ -48,15 +60,25 @@ export class AppComponent implements OnInit {
   ];
 
   ngOnInit() {
-    const users = []; 
-    let i = 0; 
-    while (i < 10 ){
+    const users = [];
+    let i = 0;
+    while (i < 10) {
       users.push({
-        firstName: faker.name.firstName();
+        firstName: faker.name.firstName(),
         lastName: faker.name.lastName(),
-        rank: faker.name.jobTitle,
-        region: faker.address.countryCode
-      })
+        rank: faker.name.jobTitle(),
+        region: faker.address.country(),
+      });
+      i++;
     }
+    this.tableData = users;
+  }
+
+  sortChange(order) {
+    //console.log(order);
+  }
+
+  resendInvite(row, action) {
+    console.log('Resend invite', row);
   }
 }
