@@ -4,13 +4,14 @@ export type NRPTableColumn = {
   title: string;
   key: string;
   sortable: boolean;
-  columnType: 'date' | 'string' | 'number';
+  columnType: any;
 };
 
 export interface NRPTableRow {
   [key: string]: any;
-  rowActions: NRPTableRowAction[];
 }
+
+export type NRPTableRowActions = NRPTableRowAction[];
 
 export type NRPTableRowAction = {
   title: string;

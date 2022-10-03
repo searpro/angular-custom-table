@@ -1,17 +1,24 @@
-import { Component, VERSION } from '@angular/core';
-import { NRPTableRowAction } from './nrp-table/NrpTableTypes';
+import { Component, OnInit, VERSION } from '@angular/core';
+import { faker } from '@faker-js/faker';
+
 
 @Component({
   selector: 'my-app',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   name = 'Angular ' + VERSION.major;
   tableColumns = [
     {
-      title: 'Name',
-      key: 'name',
+      title: 'First Name',
+      key: 'firstName',
+      sortable: true,
+      columnType: 'string',
+    },
+    {
+      title: 'Last Name',
+      key: 'lastName',
       sortable: true,
       columnType: 'string',
     },
@@ -35,8 +42,21 @@ export class AppComponent {
     },
   ];
   tableData = [
-    { name: 'lijin', age: '37', rowActions: this.rowActions },
-    { name: 'john', age: '30', rowActions: this.rowActions },
-    { name: 'doe', age: '30', rowActions: this.rowActions },
+    { firstName: 'lijin', lastName: 'Kurian', age: '37' },
+    { firstName: 'john', lastName: 'Doe', age: '30' },
+    { firstName: 'doe', lastName: 'Hannigan', age: '30' },
   ];
+
+  ngOnInit() {
+    const users = []; 
+    let i = 0; 
+    while (i < 10 ){
+      users.push({
+        firstName: faker.name.firstName();
+        lastName: faker.name.lastName(),
+        rank: faker.name.jobTitle,
+        region: faker.address.countryCode
+      })
+    }
+  }
 }
