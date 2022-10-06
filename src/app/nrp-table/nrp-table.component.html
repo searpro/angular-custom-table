@@ -11,14 +11,14 @@
     <ng-container *ngIf="col.sortable">
       <th [mat-sort-header]="col.key" mat-header-cell *matHeaderCellDef>
         <span>{{ col.title }}</span>
-        <nrp-table-filter [column]="col"></nrp-table-filter>
+        <nrp-table-filter *ngIf="col.columnType" [column]="col"></nrp-table-filter>
       </th>
     </ng-container>
 
     <ng-container *ngIf="!col.sortable">
       <th mat-header-cell *matHeaderCellDef>
         {{ col.title }}
-        <nrp-table-filter [column]="col"></nrp-table-filter>
+        <nrp-table-filter *ngIf="col.columnType" [column]="col"></nrp-table-filter>
       </th>
     </ng-container>
 

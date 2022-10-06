@@ -39,7 +39,6 @@ export class AppComponent implements OnInit, NRPTable {
       title: 'Region',
       key: 'region',
       sortable: true,
-      columnType: 'number',
     },
   ];
 

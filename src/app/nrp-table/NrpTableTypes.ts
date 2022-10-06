@@ -4,7 +4,7 @@ export type NRPTableColumn = {
   title: string;
   key: string;
   sortable: boolean;
-  columnType: any;
+  columnType?: any;
   cssClassName?: string;
 };
 

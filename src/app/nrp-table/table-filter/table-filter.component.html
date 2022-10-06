@@ -5,7 +5,9 @@
   <mat-menu #menu="matMenu">
     <div [ngSwitch]="column.columnType">
       <div *ngSwitchCase="'string'">String Type</div>
-      <div *ngSwitchCase="'date'">Date Type</div>
+      <div *ngSwitchCase="'date'">
+        <mat-calendar></mat-calendar>
+      </div>
     </div>
   </mat-menu>
 </div>

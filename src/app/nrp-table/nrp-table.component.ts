@@ -43,7 +43,6 @@ export class NrpTableComponent implements OnInit, AfterViewInit {
         sortable: false,
         key: 'actions',
         title: 'Actions',
-        columnType: 'action',
       });
     }
   }
@@ -55,5 +54,4 @@ export class NrpTableComponent implements OnInit, AfterViewInit {
   isDisabled(row, action) {
     //console.log(action);
   }
-
 }
