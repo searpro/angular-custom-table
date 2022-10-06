@@ -5,11 +5,12 @@ export type NRPTableColumn = {
   key: string;
   sortable: boolean;
   columnType: any;
+  cssClassName?: string;
 };
 
-export interface NRPTableRow {
+export type NRPTableRow = {
   [key: string]: any;
-}
+};
 
 export type NRPTableRowActions = NRPTableRowAction[];
 
@@ -42,9 +43,9 @@ export type NRPTableActionButton = {
   disabled?: boolean;
 };
 
-export interface NRPTableConsumer {
+export interface NRPTable {
   tableColumns: NRPTableColumns;
   rowActions: NRPTableRowActions;
   tableData: NRPTableData;
-  tableMetaData: NRPTableMetadata;
+  tableMetadata: NRPTableMetadata;
 }

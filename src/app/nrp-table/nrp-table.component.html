@@ -9,14 +9,16 @@
     [matColumnDef]="col.title"
   >
     <ng-container *ngIf="col.sortable">
-      <th mat-sort-header mat-header-cell *matHeaderCellDef>
-        {{ col.title }}
+      <th [mat-sort-header]="col.key" mat-header-cell *matHeaderCellDef>
+        <span>{{ col.title }}</span>
+        <nrp-table-filter [column]="col"></nrp-table-filter>
       </th>
     </ng-container>
 
     <ng-container *ngIf="!col.sortable">
       <th mat-header-cell *matHeaderCellDef>
         {{ col.title }}
+        <nrp-table-filter [column]="col"></nrp-table-filter>
       </th>
     </ng-container>
 
@@ -26,8 +28,13 @@
           <mat-icon>more_vert</mat-icon>
         </button>
         <mat-menu #menu="matMenu">
-          <button mat-menu-item *ngFor="let action of rowActions" (click)="action.action(row)" [disabled]="isDisabled(row, action)">
-            {{action.title}}
+          <button
+            mat-menu-item
+            *ngFor="let action of rowActions"
+            (click)="action.action(row)"
+            [disabled]="isDisabled(row, action)"
+          >
+            {{ action.title }}
           </button>
         </mat-menu>
       </td>

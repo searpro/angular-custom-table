@@ -55,4 +55,5 @@ export class NrpTableComponent implements OnInit, AfterViewInit {
   isDisabled(row, action) {
     //console.log(action);
   }
+
 }

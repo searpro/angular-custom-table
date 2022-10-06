@@ -1,14 +1,21 @@
 import { Component, OnInit, VERSION } from '@angular/core';
 import { faker } from '@faker-js/faker';
-import { NRPTableColumns, NRPTableMetadata, NRPTableRowActions } from './nrp-table/NrpTableTypes';
+import {
+  NRPTable,
+  NRPTableColumns,
+  NRPTableData,
+  NRPTableMetadata,
+  NRPTableRowActions,
+} from './nrp-table/NrpTableTypes';
 
 @Component({
   selector: 'my-app',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit, NRPTable {
   name = 'Angular ' + VERSION.major;
+
   tableColumns: NRPTableColumns = [
     {
       title: 'First Name',
@@ -26,7 +33,7 @@ export class AppComponent implements OnInit {
       title: 'Rank',
       key: 'rank',
       sortable: false,
-      columnType: 'number',
+      columnType: 'date',
     },
     {
       title: 'Region',
@@ -53,7 +60,8 @@ export class AppComponent implements OnInit {
       action: this.resendInvite,
     },
   ];
-  tableData = [
+
+  tableData: NRPTableData = [
     { firstName: 'lijin', lastName: 'Kurian', age: '37' },
     { firstName: 'john', lastName: 'Doe', age: '30' },
     { firstName: 'doe', lastName: 'Hannigan', age: '30' },
@@ -69,11 +77,12 @@ export class AppComponent implements OnInit {
         tooltip: 'add user',
         variant: 'primary',
         disabled: false,
-        action: (context) => { console.log('Add User', context) }
-      }
+        action: (context) => {
+          console.log('Add User', context);
+        },
+      },
     ],
-
-  }
+  };
 
   ngOnInit() {
     const users = [];

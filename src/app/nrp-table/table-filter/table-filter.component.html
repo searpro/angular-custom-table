@@ -1,0 +1,11 @@
+<div (click)="preventSort($event)">
+  <button mat-icon-button [matMenuTriggerFor]="menu">
+    <mat-icon>filter_list</mat-icon>
+  </button>
+  <mat-menu #menu="matMenu">
+    <div [ngSwitch]="column.columnType">
+      <div *ngSwitchCase="'string'">String Type</div>
+      <div *ngSwitchCase="'date'">Date Type</div>
+    </div>
+  </mat-menu>
+</div>
